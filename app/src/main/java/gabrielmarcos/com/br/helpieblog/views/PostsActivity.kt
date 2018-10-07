@@ -63,7 +63,6 @@ class PostsActivity: AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowHomeEnabled(true)
         toolbar?.title = getString(R.string.activity_title_posts)
-        progressBar.visibility = View.VISIBLE
     }
 
     private fun requestPosts(id: String?) {
