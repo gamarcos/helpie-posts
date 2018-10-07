@@ -14,6 +14,9 @@ class MainActivity : AppCompatActivity() {
     private var toolbar: ActionBar? = null
     private var fragmentList = arrayListOf(UserFragment(), PhotosFragment())
 
+    private var logsFragment = arrayListOf("User Fragment", "Photos Fragment")
+    private var currentPage = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -23,11 +26,11 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.navigationUser -> {
                     toolbar?.title = getString(R.string.fragment_title_user)
-                    loadFragment(fragmentList[0])
+                    loadFragment(0)
                 }
                 R.id.navigationPhotos -> {
                     toolbar?.title = getString(R.string.fragment_title_photos)
-                    loadFragment(fragmentList[1])
+                    loadFragment(1)
                 }
                 else -> {
                     false
@@ -39,14 +42,24 @@ class MainActivity : AppCompatActivity() {
     private fun setupView() {
         toolbar = supportActionBar
         toolbar?.title = getString(R.string.fragment_title_user)
-        loadFragment(fragmentList[0])
+        loadFragment(0)
     }
 
-    private fun loadFragment(fragment: Fragment): Boolean {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.mainFrameLayout, fragment)
-        transaction.addToBackStack(null)
-        transaction.commit()
+    private fun loadFragment(index: Int): Boolean {
+        val fragment = fragmentList[index]
+        val tag = logsFragment[index]
+
+        val fragmentTransaction = supportFragmentManager.beginTransaction()
+
+        if (supportFragmentManager.findFragmentByTag(tag) == null) {
+            fragmentTransaction.add(R.id.mainFrameLayout, fragment, tag)
+        }
+
+        fragmentTransaction.hide(fragmentList[currentPage])
+        fragmentTransaction.show(fragment)
+        fragmentTransaction.commit()
+
+        currentPage = index
 
         return true
     }
