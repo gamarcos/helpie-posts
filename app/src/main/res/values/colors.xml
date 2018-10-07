@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#26A69A</color>
+    <color name="colorPrimaryDark">#009688</color>
+    <color name="colorAccent">#B2DFDB</color>
+
+    <!-- Color Pallete -->
+    <color name="orange">#ed743e</color>
+    <color name="orangeDark">#eb6327</color>
+    <color name="orangeLight0">#f1966d</color>
+    <color name="orangeLight1">#f4a684</color>
+    <color name="orangeLight2">#ffe4d8</color>
+
+    <color name="blue">#5d6ba0</color>
+    <color name="blueLight">#71cacd</color>
+    <color name="blueGray">#728c9e</color>
+    <color name="green">#b3cb37</color>
+    <color name="red">#e03726</color>
+
+    <color name="grayScale0">#333333</color>
+    <color name="grayScale1">#777777</color>
+    <color name="grayScale2">#bbbbbb</color>
+    <color name="grayScale3">#dddddd</color>
+    <color name="grayScale4">#fafafa</color>
+
+    <color name="redGradient0">#f4a07b</color>
+    <color name="redGradient1">#ed743e</color>
+    <color name="orangeGradient0">#ffda19</color>
+    <color name="orangeGradient1">#ed6c21</color>
+    <color name="purpleGradient0">#6841a0</color>
+    <color name="purpleGradient1">#6a949e</color>
+    <color name="blueGradient0">#738c9e</color>
+    <color name="bluegradient1">#ed6d2d</color>
+    <color name="greenGradient0">#ced849</color>
+    <color name="greenGradient1">#8fcecc</color>
+
+</resources>

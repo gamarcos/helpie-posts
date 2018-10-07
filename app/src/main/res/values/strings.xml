@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">HelpieBlog</string>
+
+    <!--Menu-->
+    <string name="menu_title_user">Users</string>
+    <string name="menu_title_photos">Photos</string>
+
+    <!--Fragments-->
+    <string name="fragment_title_user">Users</string>
+    <string name="fragment_title_photos">Photos</string>
+
+    <!--Posts-->
+    <string name="activity_title_posts">Posts</string>
+
+    <!--Photos-->
+    <string name="activity_title_photos">Photos</string>
+
+</resources>

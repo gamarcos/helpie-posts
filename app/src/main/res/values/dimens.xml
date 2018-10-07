@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--User-->
+    <dimen name="user_cell_margin_vertical">8dp</dimen>
+    <dimen name="user_cell_margin_horizontal">16dp</dimen>
+
+    <!--Photos-->
+    <dimen name="photos_card_height">180dp</dimen>
+    <dimen name="photos_card_width">200dp</dimen>
+    <dimen name="photos_card_elevation">5dp</dimen>
+    <dimen name="photos_card_corner">5dp</dimen>
+    <dimen name="photos_card_image_size">150dp</dimen>
+    <dimen name="photos_card_image_description">50dp</dimen>
+    <dimen name="photos_card_margin_content">8dp</dimen>
+
+    <!--Post-->
+    <dimen name="posts_cards_margin_content">8dp</dimen>
+    <dimen name="posts_cards_margin_horizontal">8dp</dimen>
+    <dimen name="posts_cards_margin_vertical">8dp</dimen>
+    <dimen name="posts_cards_title_text_size">20sp</dimen>
+    <dimen name="posts_cards_body_text_size">17sp</dimen>
+</resources>
