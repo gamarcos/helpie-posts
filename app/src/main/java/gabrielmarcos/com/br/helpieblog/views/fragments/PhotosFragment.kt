@@ -2,14 +2,18 @@ package gabrielmarcos.com.br.helpieblog.views.fragments
 
 import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
 import android.support.v4.app.Fragment
 import android.support.v7.widget.StaggeredGridLayoutManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.Animation
+import android.view.animation.AnimationUtils
 import gabrielmarcos.com.br.helpieblog.R
 import gabrielmarcos.com.br.helpieblog.models.PhotosModel
 import gabrielmarcos.com.br.helpieblog.services.PhotosService
+import gabrielmarcos.com.br.helpieblog.utils.PicassoServiceHelper
 import gabrielmarcos.com.br.helpieblog.views.PhotosActivity
 import gabrielmarcos.com.br.helpieblog.views.adapters.PhotosAdapter
 import kotlinx.android.synthetic.main.fragment_photos.*
@@ -56,10 +60,18 @@ class PhotosFragment: Fragment(), PhotosAdapter.PhotosAdapterListener {
         photosRecyclerView.layoutManager = layoutManager
     }
 
-    override fun onPhotoClicked(photo: PhotosModel) {
-        val intent = Intent(context, PhotosActivity::class.java)
-        intent.putExtra(PhotosActivity.URL_IMAGE, photo.url)
-        intent.putExtra(PhotosActivity.TITLE_IMAGE, photo.title)
-        startActivity(intent)
+    override fun onPhotoClicked(photo: PhotosModel, pressed: Boolean) {
+        val picassoService = PicassoServiceHelper(context)
+        picassoService.loadImage(photo.url, imageModal)
+
+        if (pressed) {
+            imageCard.visibility = View.VISIBLE
+            val scaleIn = AnimationUtils.loadAnimation(context, R.anim.scale_fade_in)
+            imageCard.startAnimation(scaleIn)
+        } else if (!pressed && imageCard.visibility == View.VISIBLE) {
+            val scaleOut = AnimationUtils.loadAnimation(context, R.anim.scale_fade_out)
+            imageCard.startAnimation(scaleOut)
+            imageCard.visibility = View.GONE
+        }
     }
 }

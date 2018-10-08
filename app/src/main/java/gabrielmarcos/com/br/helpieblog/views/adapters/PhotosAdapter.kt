@@ -1,10 +1,9 @@
 package gabrielmarcos.com.br.helpieblog.views.adapters
 
 import android.content.Context
+import android.os.Handler
 import android.support.v7.widget.RecyclerView
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import gabrielmarcos.com.br.helpieblog.R
 import gabrielmarcos.com.br.helpieblog.models.PhotosModel
 import gabrielmarcos.com.br.helpieblog.utils.PicassoServiceHelper
@@ -18,7 +17,7 @@ class PhotosAdapter(val context: Context,
                     val listener: PhotosAdapterListener): RecyclerView.Adapter<PhotosAdapter.ViewHolder>() {
 
     interface PhotosAdapterListener {
-        fun onPhotoClicked(photo: PhotosModel)
+        fun onPhotoClicked(photo: PhotosModel, pressed: Boolean)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -40,8 +39,20 @@ class PhotosAdapter(val context: Context,
 
             picassoService.loadImage(photo.thumbnailUrl, itemView.photoCard)
 
-            itemView.photoContent.setOnClickListener {
-                listener.onPhotoClicked(photo)
+            val handler = Handler()
+            val mLongPressed = Runnable {
+                listener.onPhotoClicked(photo, true)
+            }
+
+            itemView.photoContent.setOnTouchListener { view, motionEvent ->
+                if (motionEvent?.action == MotionEvent.ACTION_DOWN) {
+                    handler.postDelayed(mLongPressed, 500)
+                }
+                if ((motionEvent?.action == MotionEvent.ACTION_MOVE)||(motionEvent?.action == MotionEvent.ACTION_UP)) {
+                    handler.removeCallbacks(mLongPressed)
+                    listener.onPhotoClicked(photo, false)
+                }
+                true
             }
         }
     }
